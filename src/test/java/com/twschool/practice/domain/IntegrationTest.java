@@ -20,4 +20,24 @@ public class IntegrationTest {
         i.addPoint();
         Assert.assertEquals(3, i.getPoint());
     }
+
+    @Test
+    public void should_return_11_when_execute_3_times_method_addPoint() {
+        Integration i = new Integration();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        Assert.assertEquals(11, i.getPoint());
+    }
+
+//    @Test
+//    public void should_return_20_when_execute_5_times_method_addPoint() {
+//        Integration i = new Integration();
+//        i.addPoint();
+//        i.addPoint();
+//        i.addPoint();
+//        i.addPoint();
+//        i.addPoint();
+//        Assert.assertEquals(20, i.getPoint());
+//    }
 }
