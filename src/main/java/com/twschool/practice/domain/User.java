@@ -3,6 +3,7 @@ package com.twschool.practice.domain;
 public class User {
 
     private String id;
+
     private Integration integration;
 
     public User(String id) {
@@ -16,6 +17,10 @@ public class User {
 
     public void win() {
         this.integration.addPoint();
+    }
+
+    public void lose() {
+        this.integration.subPoint();
     }
 
     public int getPoint() {
