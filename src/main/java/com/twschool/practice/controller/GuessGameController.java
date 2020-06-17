@@ -1,5 +1,6 @@
 package com.twschool.practice.controller;
 
+import com.twschool.practice.domain.User;
 import com.twschool.practice.service.GuessGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,33 @@ public class GuessGameController {
     }
 
     @RequestMapping("/game/start")
-    public Map<String, String> guessGameByUser(@RequestParam("id") String id) {
+    public Map<String, String> guessGameStartByUser(@RequestParam("id") String id) {
         Map<String, String> resultMap = new HashMap<>();
         resultMap.put("isNewUser", String.valueOf(guessGameService.startGame(id)));
         resultMap.put("userId", id);
+        return resultMap;
+    }
+
+    @RequestMapping("/game/guess")
+    public Map<String, String> guessGameByUser(@RequestParam("id") String id, @RequestParam("input") String input) {
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("userId", id);
+        resultMap.put("input", input);
+        resultMap.put("isExistUser", String.valueOf(!guessGameService.isExistUser(id)));
+        resultMap.put("result", guessGameService.guess(id, input));
+        return resultMap;
+    }
+
+    @RequestMapping("/getUser")
+    public Map<String, String> getUser(@RequestParam("id") String id) {
+        Map<String, String> resultMap = new HashMap<>();
+        User u = guessGameService.getUser(id);
+        if (u == null) {
+            resultMap.put("user", "is not exist");
+        }else {
+            resultMap.put("id", u.getId());
+            resultMap.put("point", String.valueOf(u.getPoint()));
+        }
         return resultMap;
     }
 }

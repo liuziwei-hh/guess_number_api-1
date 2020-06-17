@@ -14,6 +14,8 @@ import java.util.List;
 @Component
 public class GuessGameService {
 
+    private static final String CORRECT_RESULT = "4A0B";
+
     private GuessNumberGame guessNumberGame;
 
     @Autowired
@@ -42,5 +44,24 @@ public class GuessGameService {
         userRepository.set(id, user);
         gameRepository.set(id, new GuessNumberGame(new RandomAnswerGenerator()));
         return true;
+    }
+
+    public boolean isExistUser(String id) {
+        return startGame(id);
+    }
+
+    public String guess(String id, String userAnswerString) {
+        String result = this.gameRepository.get(id).guess(Arrays.asList(userAnswerString.split(" ")));
+        User u  = this.userRepository.get(id);
+        if (CORRECT_RESULT.equals(result)) {
+            u.win();
+        } else {
+            u.lose();
+        }
+        return result;
+    }
+
+    public User getUser(String id) {
+        return this.userRepository.get(id);
     }
 }
