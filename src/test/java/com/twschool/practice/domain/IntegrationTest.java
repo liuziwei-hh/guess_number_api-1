@@ -13,4 +13,11 @@ public class IntegrationTest {
         Integration i = new Integration();
         Assert.assertEquals(0, i.getPoint());
     }
+
+    @Test
+    public void should_return_3_when_execute_method_addPoint() {
+        Integration i = new Integration();
+        i.addPoint();
+        Assert.assertEquals(3, i.getPoint());
+    }
 }
