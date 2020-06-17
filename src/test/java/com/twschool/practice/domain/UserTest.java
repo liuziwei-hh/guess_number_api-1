@@ -68,4 +68,33 @@ public class UserTest {
         Assert.assertEquals(40, u.getPoint());
     }
 
+    @Test
+    public void should_return_burden_3_when_user_lose() {
+        User u = new User("test");
+        u.lose();
+        Assert.assertEquals(-3, u.getPoint());
+    }
+
+    @Test
+    public void should_return_6_when__2_times_win_and_lose_and_win() {
+        User u = new User("test");
+        u.win();
+        u.win();
+        u.lose();
+        u.win();
+        Assert.assertEquals(6, u.getPoint());
+    }
+
+    @Test
+    public void should_return_14_when_2_times_win_and_lose_and_3_times_win() {
+        User i = new User("test");
+        i.win();
+        i.win();
+        i.lose();
+        i.win();
+        i.win();
+        i.win();
+        Assert.assertEquals(14, i.getPoint());
+    }
+
 }
