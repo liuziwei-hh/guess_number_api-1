@@ -66,6 +66,18 @@ public class IntegrationTest {
         Assert.assertEquals(6, i.getPoint());
     }
 
+    @Test
+    public void should_return_14_when_execute_2_times_addPoint_and_execute_subPoint_and_execute_3_times_addPoint() {
+        Integration i = new Integration();
+        i.addPoint();
+        i.addPoint();
+        i.subPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        Assert.assertEquals(14, i.getPoint());
+    }
+
     private void executeAddPointByCount(Integration integration, int count) {
         for (int i = 0; i < count; i++) {
             integration.addPoint();
