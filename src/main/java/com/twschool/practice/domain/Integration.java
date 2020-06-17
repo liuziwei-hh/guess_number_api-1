@@ -27,9 +27,8 @@ public class Integration {
         this.point += ONCE_ADD_STEP;
         if (++addCount == THREE_TIMES_WIN_BOUNS_COUNT) {
             this.point += THREE_TIMES_WIN_BOUNS_POINT;
+        } else if (addCount == FIVE_TIMES_WIN_BOUNS_COUNT) {
+            this.point += FIVE_TIMES_WIN_BOUNS_POINT;
         }
-//        else if (addCount == FIVE_TIMES_WIN_BOUNS_COUNT) {
-//            this.point += FIVE_TIMES_WIN_BOUNS_POINT;
-//        }
     }
 }
