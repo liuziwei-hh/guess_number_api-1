@@ -79,4 +79,13 @@ public class GuessGameControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.userId").value("test"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.isExistUser").value("false"));
     }
+
+    @Test
+    public void should_return_user_isNotExist_when_request_url_getUser_with_param_id_test() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/getUser")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("id", "test"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.user").value("is not exist"));
+    }
 }
