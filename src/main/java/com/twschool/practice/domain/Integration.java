@@ -7,6 +7,7 @@ public class Integration {
 
     private static final int INIT_WIN_BOUNS_COUNT = 0;
     private static final int ONCE_ADD_STEP = 3;
+    private static final int ONCE_SUB_STEP = -3;
     private static final int THREE_TIMES_WIN_BOUNS_COUNT = 3;
     private static final int THREE_TIMES_WIN_BOUNS_POINT = 2;
     private static final int FIVE_TIMES_WIN_BOUNS_COUNT = 5;
@@ -32,5 +33,10 @@ public class Integration {
             this.point += FIVE_TIMES_WIN_BOUNS_POINT;
             this.addCount = INIT_WIN_BOUNS_COUNT;
         }
+    }
+
+    public void subPoint() {
+        this.point += ONCE_SUB_STEP;
+//        this.addCount = INIT_WIN_BOUNS_COUNT;
     }
 }
