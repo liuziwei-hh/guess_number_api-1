@@ -37,6 +37,6 @@ public class Integration {
 
     public void subPoint() {
         this.point += ONCE_SUB_STEP;
-//        this.addCount = INIT_WIN_BOUNS_COUNT;
+        this.addCount = INIT_WIN_BOUNS_COUNT;
     }
 }
