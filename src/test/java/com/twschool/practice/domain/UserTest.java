@@ -11,4 +11,5 @@ public class UserTest {
         u.setId("test");
         Assert.assertEquals("test", u.getId());
     }
+
 }
