@@ -23,4 +23,12 @@ public class GuessGameController {
         resultMap.put("result", guessGameService.guess(input));
         return resultMap;
     }
+
+    @RequestMapping("/game/start")
+    public Map<String, String> guessGameByUser(@RequestParam("id") String id) {
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("isNewUser", String.valueOf(guessGameService.startGame(id)));
+        resultMap.put("userId", id);
+        return resultMap;
+    }
 }
