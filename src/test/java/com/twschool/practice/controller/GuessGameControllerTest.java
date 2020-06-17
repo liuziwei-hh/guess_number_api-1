@@ -28,4 +28,31 @@ public class GuessGameControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.input").value("1 2 3 4"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result").value("4A0B"));
     }
+
+    @Test
+    public void should_return_isNewUser_true_and_userId_test_when_request_url_game_start_with_param_id_test() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/game/start")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("id", "test"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.isNewUser").value("true"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.userId").value("test"));
+    }
+
+    @Test
+    public void should_return_isNewUser_false_and_userId_test_when_request_url_game_start_with_param_id_test_twice() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/game/start")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("id", "test"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.isNewUser").value("true"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.userId").value("test"));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/game/start")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("id", "test"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.isNewUser").value("false"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.userId").value("test"));
+    }
 }
