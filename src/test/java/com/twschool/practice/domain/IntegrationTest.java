@@ -40,4 +40,34 @@ public class IntegrationTest {
         i.addPoint();
         Assert.assertEquals(20, i.getPoint());
     }
+
+    @Test
+    public void should_return_31_when_execute_8_times_method_addPoint() {
+        Integration i = new Integration();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        Assert.assertEquals(31, i.getPoint());
+    }
+
+    @Test
+    public void should_return_40_when_execute_10_times_method_addPoint() {
+        Integration i = new Integration();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        i.addPoint();
+        Assert.assertEquals(40, i.getPoint());
+    }
 }
